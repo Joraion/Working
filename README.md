@@ -151,3 +151,77 @@ do{
 
 最后while循环不执行循环体
 而do while循环执行一次 输出a=5.
+
+
+
+
+
+Java的三个关键词 break  , continue ,  return.
+
+1,break 
+主要为switch分支结构中结束某个当前分支的作用
+	switch (条件)
+	{
+	case 值:
+   //执行代码
+	break;
+	}
+	default;
+
+
+若为for循环
+则:若为for内部循环则不影响外部循环.
+   若要结束外部循环,则需要在外部for循环加上break标签.但不影响内部循环.
+
+
+2,continue:
+在嵌套循环中忽略本次满足的if条件的循环转而进行下一轮循环.
+若要忽略外循环某一条件,则需在外循环中添加标签continue
+continue不能用在switch分支中;
+
+
+3,return:
+用于直接结束程序,当条件满足时return将不再执行接下来的程序进而结束整个程序
+将结果返还给上一级
+
+数组:当有多个类型(byte short int long float double char)相同切功能相同的变量时
+用数组将这些变量打包成一块即成数组
+
+静态数组:
+语法: (1)数组类型[] 数组名称 = new 数组类型[]{元素1,元素2,元素3,元素4);
+	  (2)数组类型[] 数组名称 = {元素1,元素2,元素3,元素4};
+      (3)数组类型 数组名称[] = {元素1,元素2,元素3,元素4};
+ 获取数组的长度:
+             System.out.println("数组名称.length+" + 数组名称.length);
+ 获取数组中某一元素:
+	            int 变量 = 数组名称[元素索引];注:第一个元素索引为0;
+			 System.out.println("数组名称[元素索引]=" + 变量); 
+ 遍历数组中的所有元素:
+		
+ 
+	(1)for循环:
+	 for (int A = 0;A<数组名称.length ;A++ )
+	 {
+			 System.out.println("数组名称["+A+"]="+数组名称[元素索引]);
+	 }
+		
+		
+		
+	(2)while循环:
+		int A = 0
+		while (A<数组名称.length)
+		{
+			 System.out.println("数组名称["+A+"]="+数组名称[元素索引]);
+			 A++;
+		 }
+
+	(3)for each
+		for( int 变量F : 数组名称)
+	{
+			 System.out.println("变量F = " + 变量F);
+
+	}
+
+给数组中元素赋值:
+	   数组名称[元素索引] = [数值];
+		int 变量O = 数组名字[元素索引];
