@@ -237,7 +237,7 @@ continue不能用在switch分支中;
 		int 变量O = 数组名字[元素索引];
 		
 		
-                                    面向对象总述
+                                     面向对象总述
 一.类中五大成分:
 1,成员变量  
 2,代码块
@@ -327,7 +327,44 @@ static修饰的成员变量为静态成员变量,可直接用类方法进行调�
 3)匿名内部类:用于接口和抽象类之中
 	匿名内部诶必须重写所有的抽象方法,不能构造方法,不能定义任何静态成员   变量方法和静态类 
 4)用于对数据更严密的封装,可用除   public   ,final ,abstract(外部类只能用这三种修饰符修饰)   外的  private,protected,static三种修饰符修饰
-	
+5)静态内部类不能直接访问外部类实例成员变量,只能访问静态成员变量,外部类也不能访问静态内部类成员变量
+6)外部类可以通过外部类方法使用内部类类名调用成员变量进行 访问
+
+public class neibulei {
+	//外部类成员
+	static int a = 10;
+	String name = "热火";
+	//定义内部类people
+	public static class people {
+		//内部类成员变量
+		static int B = 30;
+		int c = 3;
+		//此入口不执行,执行外部类第一个入口main	
+		public static void main(String[] args) {
+			System.out.println(a);
+		}
+
+	}
+
+	public static void main(String[] args) {
+		//创建外部类实例
+		neibulei A = new neibulei();
+		//外部类实例调用该方法后访问内部类成员
+		A.play();
+		System.out.println(a);
+	}
+
+	public void play() {
+		//通过内部类类名作为对象访问内部类静态成员
+		System.out.println(people.B);
+		//通过内部类实例对象访问内部类实例成员
+		people num = new people();
+		System.out.println(num.c);
+
+	}
+
+}
+
   
 
 
@@ -427,6 +464,7 @@ equals 用于比较两个对象是否相等,不能用于基本类型的数据比
 3)主要用于被继承,无法创建对象
 4)子类继承抽象类,若不是抽象子类则必须重写抽象父类中所有抽象方法,成为创建对象实现父类方法的实现类
     若不重写父类中所有抽象方法则子类也必须为抽象类
+5)抽象方法:   public void play();抽象方法无执行体
 
 abstract,final,static
 abstract抽象类与方法一般用于被继承被重写
@@ -435,4 +473,14 @@ static修饰的静态方法也不能被重写
 
 
 
-
+接口:
+1,一个接口可以继承多个父接口,为多继承.而一个类只能继承一个类,为单继承
+2,为一种更高级更规范的抽象类,故不能创建实例对象
+3,定义接口中的成员变量,必须赋初始值并且不能更改,所有成员变量在接口中都会默认加上public  static final修饰符,为静态的
+	只能被赋值一次的常量,即使两个类不在同一个包下面另一个类也能访问接口中的成员常量
+4,当一个类实现接口时必须重写接口类的所有方法,若实现类不重写接口中方法,则该类必为抽象类
+5,接口中不能定义实例方法, public void 方法名(){},除非是声明 default 的方法
+6,接口中默认所有方法都为抽象方法,即使不加 abstract,在编译时都会自动加上abstract修饰词
+7,可以定义静态方法
+8,接口中default方法不能用接口直接调用,而实现类可以,创建实现类实例对接口中的default方法进行调用
+9,实现类可以接收接口的实例,调用接口default方法
